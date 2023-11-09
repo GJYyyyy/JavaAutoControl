@@ -23,7 +23,7 @@ public class AutoControl {
             public void run() {
                 try {
                     Script.run();
-                    if (Script.COUNT++ >= Script.MAX_COUNT) {
+                    if (++Script.COUNT >= Script.MAX_COUNT) {
                         Script.COUNT = 0;
                         timer.cancel();
                     }
