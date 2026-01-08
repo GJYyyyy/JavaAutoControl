@@ -13,8 +13,10 @@ import java.util.Random;
 public class Utils {
     Robot robot;
 
-    final static int MOUSE_LEFT_BUTTON = KeyEvent.BUTTON1_DOWN_MASK;
-    final static int MOUSE_RIGHT_BUTTON = KeyEvent.BUTTON2_DOWN_MASK;
+    // 鼠标按键
+    final static int MOUSE_LEFT_BUTTON = KeyEvent.BUTTON1_DOWN_MASK; // 左键
+    final static int MOUSE_RIGHT_BUTTON = KeyEvent.BUTTON2_DOWN_MASK; // 右键
+    final static int MOUSE_MIDDLE_BUTTON = KeyEvent.BUTTON3_DOWN_MASK; // 中键
 
     final static int KEY_0 = KeyEvent.VK_0;
     final static int KEY_1 = KeyEvent.VK_1;
@@ -52,6 +54,38 @@ public class Utils {
     final static int KEY_X = KeyEvent.VK_X;
     final static int KEY_Y = KeyEvent.VK_Y;
     final static int KEY_Z = KeyEvent.VK_Z;
+
+    // 小数字键盘
+    final static int KEY_0_NUM = KeyEvent.VK_NUMPAD0;
+    final static int KEY_1_NUM = KeyEvent.VK_NUMPAD1;
+    final static int KEY_2_NUM = KeyEvent.VK_NUMPAD2;
+    final static int KEY_3_NUM = KeyEvent.VK_NUMPAD3;
+    final static int KEY_4_NUM = KeyEvent.VK_NUMPAD4;
+    final static int KEY_5_NUM = KeyEvent.VK_NUMPAD5;
+    final static int KEY_6_NUM = KeyEvent.VK_NUMPAD6;
+    final static int KEY_7_NUM = KeyEvent.VK_NUMPAD7;
+    final static int KEY_8_NUM = KeyEvent.VK_NUMPAD8;
+    final static int KEY_9_NUM = KeyEvent.VK_NUMPAD9;
+
+    // 特殊按键
+    final static int KEY_CTRL = KeyEvent.VK_CONTROL; // ctrl键
+    final static int KEY_ALT = KeyEvent.VK_ALT; // alt键
+    final static int KEY_SHIFT = KeyEvent.VK_SHIFT; // shift键
+    final static int KEY_ENTER = KeyEvent.VK_ENTER; // 回车键
+
+    // F1 ~ F12
+    final static int KEY_F1 = KeyEvent.VK_F1;
+    final static int KEY_F2 = KeyEvent.VK_F2;
+    final static int KEY_F3 = KeyEvent.VK_F3;
+    final static int KEY_F4 = KeyEvent.VK_F4;
+    final static int KEY_F5 = KeyEvent.VK_F5;
+    final static int KEY_F6 = KeyEvent.VK_F6;
+    final static int KEY_F7 = KeyEvent.VK_F7;
+    final static int KEY_F8 = KeyEvent.VK_F8;
+    final static int KEY_F9 = KeyEvent.VK_F9;
+    final static int KEY_F10 = KeyEvent.VK_F10;
+    final static int KEY_F11 = KeyEvent.VK_F11;
+    final static int KEY_F12 = KeyEvent.VK_F12;
 
     public Utils() {
         try {
@@ -341,6 +375,55 @@ public class Utils {
     public void keyRelease(int keyCode, int minDelay, int maxDelay) throws InterruptedException {
         Thread.sleep(random(minDelay, maxDelay));
         robot.keyRelease(keyCode);
+    }
+
+    /**
+     * 点击键盘组合键
+     * 
+     * @param keyCodes
+     */
+    public void keyComboClick(int[] keyCodes) {
+        for (int i = 0; i < keyCodes.length; i++) {
+            robot.keyPress(keyCodes[i]);
+        }
+        for (int i = keyCodes.length - 1; i >= 0; i--) {
+            robot.keyRelease(keyCodes[i]);
+        }
+    }
+
+    /**
+     * 点击键盘组合键(延迟一段时间执行)
+     * 
+     * @param keyCodes
+     * @param delay
+     * @throws InterruptedException
+     */
+    public void keyComboClick(int[] keyCodes, int delay) throws InterruptedException {
+        for (int i = 0; i < keyCodes.length; i++) {
+            robot.keyPress(keyCodes[i]);
+        }
+        Thread.sleep(delay);
+        for (int i = keyCodes.length - 1; i >= 0; i--) {
+            robot.keyRelease(keyCodes[i]);
+        }
+    }
+
+    /**
+     * 点击键盘组合键(范围时间内随机延迟)
+     * 
+     * @param keyCodes
+     * @param minDelay
+     * @param maxDelay
+     * @throws InterruptedException
+     */
+    public void keyComboClick(int[] keyCodes, int minDelay, int maxDelay) throws InterruptedException {
+        for (int i = 0; i < keyCodes.length; i++) {
+            robot.keyPress(keyCodes[i]);
+        }
+        Thread.sleep(random(minDelay, maxDelay));
+        for (int i = keyCodes.length - 1; i >= 0; i--) {
+            robot.keyRelease(keyCodes[i]);
+        }
     }
 
     /**

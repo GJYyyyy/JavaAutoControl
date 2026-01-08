@@ -27,6 +27,8 @@ public class Script {
          * utils.mouseMove(100, 100, 1000, 2000);
          * utils.mouseClick(Utils.MOUSE_LEFT_BUTTON, 1000, 2000);
          * utils.keyClick(Utils.KEY_9, 1000, 2000);
+         * int[] keyCodes = { Utils.KEY_CTRL, Utils.KEY_C }; // Ctrl + C 复制操作
+         * utils.keyComboClick(keyCodes); // Ctrl + C 复制操作
          */
     }
 
@@ -41,6 +43,8 @@ public class Script {
          * utils.mouseMove(100, 100, 1000, 2000);
          * utils.mouseClick(Utils.MOUSE_LEFT_BUTTON, 1000, 2000);
          * utils.keyClick(Utils.KEY_9, 1000, 2000);
+         * int[] keyCodes = { Utils.KEY_CTRL, Utils.KEY_C }; // Ctrl + C 复制操作
+         * utils.keyComboClick(keyCodes); // Ctrl + C 复制操作
          */
     }
 
@@ -53,6 +57,8 @@ public class Script {
          * utils.mouseMove(100, 100, 1000, 2000);
          * utils.mouseClick(Utils.MOUSE_LEFT_BUTTON, 1000, 2000);
          * utils.keyClick(Utils.KEY_9, 1000, 2000);
+         * int[] keyCodes = { Utils.KEY_CTRL, Utils.KEY_C }; // Ctrl + C 复制操作
+         * utils.keyComboClick(keyCodes); // Ctrl + C 复制操作
          */
     }
 }
